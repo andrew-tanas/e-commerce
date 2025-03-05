@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@import 'ngx-toastr/toastr';
+
+.btn-main{
+    @apply disabled:bg-gray-300 bg-green-600 text-white px-10 py-2 border rounded hover:bg-green-800 transition-colors duration-500
+}
+
+body{
+    font-family: "Montserrat", serif;
+}
+
+.main-section{
+    @apply bg-gray-50 rounded border shadow p-4 mx-auto
+}
