@@ -79,12 +79,6 @@
                 <span><i class="fas fa-spin fa-spinner"></i></span>
             }
         </button>
-        <button [disabled]="isLoading" type="submit" class="btn-main">
-            Cash
-            @if (isLoading) {
-                <span><i class="fas fa-spin fa-spinner"></i></span>
-            }
-        </button>
 
         @if (messageError) {
             <p class="bg-red-400 text-white px-2 py-4 border rounded">{{messageError}}</p>
