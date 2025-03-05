@@ -62,7 +62,7 @@ export class DetailsComponent implements OnInit {
         console.log(res);
         if(res.status === 'success'){
           this.toastrService.success(res.message, 'Fresh cart');
-          this.cartService.cartNumber.next(res.numOfCartItems);
+          this.cartService.cartNumber.set(res.numOfCartItems);
         }
         
       }
