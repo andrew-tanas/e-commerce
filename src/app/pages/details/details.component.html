@@ -1,38 +1,44 @@
 @if (productDetails) {
-    <section>
-
-        <div class="flex flex-wrap items-center">
-        
-          <!-- <owl-carousel-o [options]="customOptions">
-            @for (prodImg of productDetails.images; track $index) {
-                <ng-template carouselSlide>
-                  <div class="w-1/5">
-                    <img [src]="prodImg" [alt]="productDetails.title">
-                  </div>
-                </ng-template>
-              }
-          </owl-carousel-o> -->
-
-            <picture class="w-1/5">
-                <img [src]="productDetails.imageCover" [alt]="productDetails.title">
-            </picture>
-        
-            <div class="w-4/5">
-                <h2 class="font-medium">{{productDetails.title}}</h2>
-                <p class="my-3">{{productDetails.description}}</p>
-                <h3 class="text-green-700">{{productDetails.category.name}}</h3>
-                <div class="flex justify-between items-center">
-                    <span>{{productDetails.price}} EGP</span>
-                    <div class="flex items-center">
-                      <i class="fas fa-star text-yellow-300"></i>
-                      <span class="text-gray-500">{{productDetails.ratingsAverage}}</span>
-                    </div>
-                  </div>
-                  <button (click)="addToCart(productDetails.id)" class="bg-green-600 hover:bg-green-500 text-white py-2 px-10 border rounded w-[100%] mx-auto block">Add to cart</button>
-                    
+  <section>
+    <div class="grid grid-cols-12 items-center">
+      <div class="col-span-4">
+        <owl-carousel-o [options]="customOptions">
+          @for (prodImg of productDetails.images; track $index) {
+          <ng-template carouselSlide >
+            <div class="mx-auto h-[250px] w-[250px]">
+              <img
+                [src]="prodImg"
+                class="w-full object-contain"
+                [alt]="productDetails.title"
+              />
             </div>
-        
+          </ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+  
+      <!-- <picture class="w-1/5">
+                  <img [src]="productDetails.imageCover" [alt]="productDetails.title">
+              </picture> -->
+  
+      <div class="col-span-8">
+        <h2 class="font-medium">{{ productDetails.title }}</h2>
+        <p class="my-3">{{ productDetails.description }}</p>
+        <h3 class="text-green-700">{{ productDetails.category.name }}</h3>
+        <div class="flex justify-between items-center">
+          <span>{{ productDetails.price }} EGP</span>
+          <div class="flex items-center">
+            <i class="fas fa-star text-yellow-300"></i>
+            <span class="text-gray-500">{{ productDetails.ratingsAverage }}</span>
+          </div>
         </div>
-        
-        </section>
-}
+        <button
+          (click)="addToCart(productDetails.id)"
+          class="bg-green-600 hover:bg-green-500 text-white py-2 px-10 border rounded w-[100%] mx-auto block"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </section>
+  }

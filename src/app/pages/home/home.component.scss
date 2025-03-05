@@ -1,12 +1,12 @@
 .card{
-    button{
+    .btn-cart{
         transform: translateY(100%);
         opacity: 0;
         transition: all 500ms;
     }
 
     &:hover{
-        button{
+        .btn-cart{
             transform: translateY(0);
             opacity: 1;
         }

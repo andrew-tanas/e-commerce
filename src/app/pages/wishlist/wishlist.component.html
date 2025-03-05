@@ -1,0 +1,46 @@
+@if (wishlistDetails.length) {
+    <section class="main-section w-3/4 ">
+
+        <h1 class="text-start text-3xl text-black font-bold py-5">My wishlist</h1>
+    
+    @for (wish of wishlistDetails; track wish.id) {
+    
+        <div class="grid md:grid-cols-2 border-b mb-2">
+    
+
+            <div class="flex justify-start gap-x-5">
+                <picture>
+                    <img class="w-full h-[100px] object-contain" [src]="wish.imageCover" [alt]="wish.slug">
+                </picture>
+
+                <div class="flex flex-col justify-center items-start">
+                    <h3 class="text-black font-bold text-lg">{{wish.title}}</h3>
+                    <span class="text-green-600">{{wish.price | currency: 'GBP'}}</span>
+                    <button (click)="removeItem(wish.id)" class="text-red-700"><i class="fas fa-trash-can"></i> Remove</button>
+                </div>
+    
+            </div>
+
+            <div class="ms-auto flex justify-center items-center">
+                <button (click)="addToCart(wish.id)" class="btn-cart bg-green-600 hover:bg-green-500 text-white py-2 px-10 border rounded mx-auto block">Add to cart</button>
+            </div>
+    
+    
+        </div>
+    }
+    
+
+    
+    </section>
+    
+}
+
+@else {
+    <section class="main-section">
+        <h1 class="text-center text-3xl text-green-600">No items selected</h1>
+    </section>
+
+}
+
+
+<!-- <p>hello wish</p> -->

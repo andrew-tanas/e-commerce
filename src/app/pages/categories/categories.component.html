@@ -4,7 +4,7 @@
 
         @for (cat of categories; track cat._id) {
 
-            <div class="border border-gray-400 rounded-md overflow-hidden hover:shadow-green-500">
+            <div (click)="showSubCategories(cat._id, cat.name)" class="border border-gray-400 rounded-md overflow-hidden drop-shadow-md hover:shadow-md hover:shadow-green-600 transition-shadow duration-200">
                 
                 <picture><img class="w-full h-[250px] object-cover" [src]="cat.image" [alt]="cat.slug"></picture>
 
@@ -17,5 +17,29 @@
 
     </div>
 
-
 </section>
+
+
+@if (subCatShow) {
+    <section>
+
+        <h3 class="text-center text-3xl text-green-700 my-4">{{subCatName()}}</h3>
+    
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            @for (sub of subCategories; track sub._id) {
+
+            
+                <div class="hover:shadow-md hover:shadow-green-600 transition-shadow duration-200">
+                    <p class="text-3xl border rounded-md text-black px-5 py-4">{{sub.name}}</p>
+                </div>
+                
+            }
+        </div>
+        
+
+    
+    
+    
+    
+    </section> 
+}

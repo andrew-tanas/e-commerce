@@ -9,6 +9,7 @@ import { SearchPipe } from '../../shared/pipes/search/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+  
   private readonly productsService = inject(ProductsService)
-
   private readonly categoriesService = inject(CategoriesService);
   private readonly cartService = inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
   private readonly toastrService = inject(ToastrService);
 
   customMainSlider: OwlOptions = {
@@ -105,6 +107,18 @@ export class HomeComponent implements OnInit {
         if(res.status === 'success'){
           this.toastrService.success(res.message, 'Fresh cart');
           this.cartService.cartNumber.set(res.numOfCartItems);
+        }
+        
+      }
+    })
+  }
+  addToWishlist(id:string):void{
+    this.wishlistService.addProductToWishlist(id).subscribe({
+      next:(res)=>{
+        if(res.status === 'success'){
+          this.toastrService.success(res.message, 'Fresh cart');
+          // this.cartService.cartNumber.set(res.numOfCartItems);
+          console.log(res)
         }
         
       }

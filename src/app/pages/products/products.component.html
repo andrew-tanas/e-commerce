@@ -1,1 +1,35 @@
-<p>products works!</p>
+<section>
+
+    <input [(ngModel)]="searchTerm" type="search" placeholder="search..." class="bg-white border w-1/2 mx-auto my-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (prod of products | search: searchTerm; track prod.id) {
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative">
+              <div [routerLink]="['/details', prod.id]">
+                <div class="card-img">
+                  <img [src]="prod.imageCover" class="w-full h-[250px] object-contain" [alt]="prod.title" />
+                </div>
+                <div class="card-body px-2 py-4">
+                  <h4 class="text-green-500 text-xs">{{prod.category.name}}</h4>
+                  <h3 class="font-medium">{{prod.title.split(' ',2).join(" ")}}</h3>
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span>{{prod.price}} EGP</span>
+                    </div>
+                    <div class="flex justify-between items-center gap-x-3">
+                      <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-300"></i>
+                        <span class="text-gray-500">{{prod.ratingsAverage}}</span>
+                      </div>
+                      <button (click)="addToWishlist(prod.id); $event.stopPropagation()">
+                        <i class="fa-solid fa-heart fa-lg text-black hover:text-red-700"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button (click)="addToCart(prod.id)" class="btn-cart bg-green-600 hover:bg-green-500 text-white py-2 px-10 border rounded w-[90%] mx-auto block">Add to cart</button>
+            </div>
+        }
+    </div>
+</section>
